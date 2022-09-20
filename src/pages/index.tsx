@@ -1,7 +1,6 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import "./App.scss";
+import "./index.scss";
 
 const fetchSomething = async () => {
   const res = await fetch("./THISDOESNOTEXIST.json");
@@ -16,16 +15,8 @@ function App() {
     <div className="App">
       {status === "error" && <p>OMG THE FETCH FAILED</p>}
       {status === "loading" && <p>TRYING TO GET DATA THAT DOES NOT EXIST</p>}
-
       <button>test</button>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+      <div></div>
       <h1 className="underline text-red-600">Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -35,6 +26,8 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+
+      <a href="test">kaaas</a>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
