@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import multipage from "vite-plugin-multipage";
+import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,4 +20,14 @@ export default defineConfig({
       rootPage: "index.html" /* rootPage: The entry point into each page. */,
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./"),
+    },
+  },
+
+  build: {
+    target: "esnext",
+    polyfillModulePreload: false,
+  },
 });
