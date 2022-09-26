@@ -1,13 +1,15 @@
 import "./index.css";
-import logo from "@/assets/logo.svg";
+
 import { render } from "react-dom";
 function App() {
   return (
     <div>
       <header>
         <p className="underline">you are on page 2 :(</p>
-        <a href="/producten">Test producten example</a>
-        <img src={logo} alt="" />
+        <a href="./producten.html">Test producten example</a>
+        <a href="./register.html">Test register</a>
+
+        <img src="./assets/logo.svg" alt="" />
       </header>
     </div>
   );
