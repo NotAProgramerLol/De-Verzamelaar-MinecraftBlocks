@@ -1,5 +1,5 @@
 import Link from "../../components/general/Link";
-function Error(props: PageProps) {
+function Error() {
   return (
     <div className="App">
       <h1>Page does not exist</h1>

@@ -1,6 +1,6 @@
 import "./css/App.css";
 
-function App(props: PageProps) {
+function App() {
   return (
     <div className="App w.screen h.screen grid grid-cols-3 grid-rows-2 from-green-700 via-white to-white bg-gradient-to-b text-white">
       <div className="row-start-1 col-start-1">

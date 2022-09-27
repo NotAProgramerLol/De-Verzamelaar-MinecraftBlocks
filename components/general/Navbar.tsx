@@ -1,5 +1,4 @@
-import React from "react";
-
+import Link from "./Link";
 function Navbar() {
   return (
     <div className="navbar bg-base-100">
@@ -55,12 +54,18 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <Link href="index">
+          <p className="btn btn-ghost normal-case text-xl text-white">
+            daisyUI
+          </p>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <a>Item 1</a>
+            <Link href="Producten">
+              <p>Collectie</p>
+            </Link>
           </li>
           <li tabIndex={0}>
             <a>
@@ -90,7 +95,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <a className="btn">Login</a>
       </div>
     </div>
   );

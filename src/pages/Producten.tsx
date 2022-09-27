@@ -1,11 +1,22 @@
 import "./css/Producten.css";
-function App(props: PageProps) {
+import Product from "../../components/producten/Product";
+function App() {
   const products = [
     {
       id: 1,
       name: "Dirtblock",
       description: "",
-      price: "$100",
+      price: 100,
+      availibility: "",
+      imageSrc:
+        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
+      href: "",
+    },
+    {
+      id: 1,
+      name: "Dirtblock",
+      description: "TEST OMGF",
+      price: 100,
       availibility: "",
       imageSrc:
         "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
@@ -15,7 +26,7 @@ function App(props: PageProps) {
       id: 1,
       name: "Dirtblock",
       description: "",
-      price: "$100",
+      price: 100,
       availibility: "",
       imageSrc:
         "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
@@ -25,17 +36,7 @@ function App(props: PageProps) {
       id: 1,
       name: "Dirtblock",
       description: "",
-      price: "$100",
-      availibility: "",
-      imageSrc:
-        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
-      href: "",
-    },
-    {
-      id: 1,
-      name: "Dirtblock",
-      description: "",
-      price: "$100",
+      price: 100,
       availibility: "",
       imageSrc:
         "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
@@ -51,24 +52,12 @@ function App(props: PageProps) {
 
         <div className="mt-2 grid grid-cols-1 gap-y-0 gap-x-6 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-10">
           {products.map((product) => (
-            <div className="bg-gray-400 h-100 w-full p-3 my-1">
-              <p className="text-sm font-large text-black-100 float-right my-4">
-                {product.price}
-              </p>
-              <h2 className="text-sm font-large text-gray-400 float-left">
-                <div></div>
-                <a href={product.href}>{product.name}</a>
-              </h2>
-              <div key={product.id} className="group relative">
-                <div className="min-h-10 aspect-w-10 aspect-h-10 w-full overflow-hidden bg-gray-300 lg:aspect-none lg:h-70">
-                  <img
-                    src={product.imageSrc}
-                    className="object-cover object-center lg:h-100 lg:w-100"
-                  />
-                </div>
-                <div className="mt- flex justify-between"></div>
-              </div>
-            </div>
+            <Product
+              name={product.name}
+              id={product.id}
+              image={product.imageSrc}
+              price={product.price}
+            />
           ))}
         </div>
       </div>
