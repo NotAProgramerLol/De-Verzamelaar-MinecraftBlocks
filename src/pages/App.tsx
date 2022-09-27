@@ -1,6 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 
-import "./App.css";
+import "./css/App.css";
 interface props {
   setPage: Dispatch<SetStateAction<string>>;
 }
