@@ -1,5 +1,5 @@
 import Link from "../../components/general/Link";
-
+import "./css/Verzameling.css";
 function App() {
   return (
     <div className="App">

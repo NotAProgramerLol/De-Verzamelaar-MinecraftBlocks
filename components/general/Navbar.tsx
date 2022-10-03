@@ -54,7 +54,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <Link href="index">
+        <Link href="Index">
           <p className="btn btn-ghost normal-case text-xl text-white">
             daisyUI
           </p>
