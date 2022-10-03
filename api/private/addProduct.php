@@ -20,6 +20,18 @@ if ((!isset($productName) || $productName == "") || (!isset($productDescription)
     echo json_encode(array("response" => "Failed", "data" => ["message" => "Of de naam, descriptie, prijs of beschikbaarheid is niet ingevult!"]));
     exit;
 }
+//check if price and availability are correct
+if (!is_numeric($productPrice) || !is_numeric($productAvailability) || floor($productAvailability) != $productAvailability) {
+    echo json_encode(array("response" => "Failed", "data" => ["message" => "De prijs of beschikbaarheid is niet een goed type"]));
+    exit;
+}
+
+//check if product already exist
+$checkExist = mysqli_query($dbConnection, "SELECT `ID` FROM `Products` WHERE `productName` = '$productName'");
+if (mysqli_num_rows($checkExist) != 0) {
+    echo json_encode(array("response" => "Failed", "data" => ["message" => "Dit product bestaat al!"]));
+    exit;
+}
 // Check if image file is a actual image or fake image
 
 $check = getimagesize($_FILES["img"]["tmp_name"]);
