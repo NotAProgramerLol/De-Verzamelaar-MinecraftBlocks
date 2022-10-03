@@ -1,5 +1,5 @@
 <?php
-require_once "./utils/base64url_encode.php";
+require_once "utils/base64url_encode.php";
 function is_jwt_valid($jwt, $secret)
 {
     //split the header, body and signature

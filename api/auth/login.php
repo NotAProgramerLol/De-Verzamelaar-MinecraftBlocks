@@ -35,7 +35,7 @@ if($_SERVER["HTTPS"] != "on")
         //generate JWT
         $JWT = generate_jwt(payload: array("email" => $row["Email"], "ID" => $row["ID"], 'iat' => (time()), 'exp' => (time()+(3600*2))), secret: $JWT_secret_key);
     }
-    setcookie(name:"JWT", value:$JWT, expires_or_options:time()+(3600*2), secure:true, httponly:true);
+    setcookie(name:"JWT", value:$JWT, expires_or_options:time()+(3600*2), secure:true, httponly:true, path:"/");
     $json = json_encode(["response" => "Success", "data" => ["message"=> "Je bent ingelogd"]]);
     echo $json;
 ?>
