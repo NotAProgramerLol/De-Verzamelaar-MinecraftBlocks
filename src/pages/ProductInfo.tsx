@@ -1,5 +1,5 @@
 import Link from "../../components/general/Link";
-import "./css/ProductenInfo.css";
+import "./css/ProductInfo.css";
 function App() {
   return (
     <div className="App">
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default Error;
+export default App;

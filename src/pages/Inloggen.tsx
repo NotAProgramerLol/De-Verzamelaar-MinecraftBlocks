@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default Error;
+export default App;
