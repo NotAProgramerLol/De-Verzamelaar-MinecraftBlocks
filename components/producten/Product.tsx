@@ -10,7 +10,7 @@ type Props = {
 const Product = (product: Props) => {
   return (
     <div className="bg-gray-400 h-100 w-full p-3 my-1">
-      <p className="text-sm font-large text-black-100 float-right my-4">
+      <p className="text-sm font-large text-black float-right my-4">
         € {product.price}
       </p>
       <h2 className="text-sm font-large text-gray-400 float-left">
