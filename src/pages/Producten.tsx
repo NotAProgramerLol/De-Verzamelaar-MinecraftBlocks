@@ -1,49 +1,32 @@
 import "./css/Producten.css";
 import Product from "../../components/producten/Product";
-
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
+type response = {
+  response: string;
+  data: products[];
+};
+type products = {
+  Name: string;
+  Image: string;
+  Price: number;
+  ID: number;
+};
 function App() {
-  const products = [
-    {
-      id: 1,
-      name: "Dirtblock",
-      description: "",
-      price: 100,
-      availibility: "",
-      imageSrc:
-        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
-      href: "",
-    },
-    {
-      id: 1,
-      name: "Dirtblock",
-      description: "TEST OMGF",
-      price: 100,
-      availibility: "",
-      imageSrc:
-        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
-      href: "",
-    },
-    {
-      id: 1,
-      name: "Dirtblock",
-      description: "",
-      price: 100,
-      availibility: "",
-      imageSrc:
-        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
-      href: "",
-    },
-    {
-      id: 1,
-      name: "Dirtblock",
-      description: "",
-      price: 100,
-      availibility: "",
-      imageSrc:
-        "https://crafty.graphics/wp-content/uploads/2020/12/Minecraft-Dirt-Block.jpg",
-      href: "",
-    },
-  ];
+  const queryClient = useQueryClient();
+  const { isLoading, error, data } = useQuery(
+    ["getProducts"],
+    async (): Promise<response | any> => {
+      let resp = await fetch(
+        "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getProducts.php"
+      );
+      resp = (await resp.json()) as response | any;
+      return resp;
+    }
+  );
+  useEffect;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>An error has occurred!</p>;
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -52,12 +35,12 @@ function App() {
         </h2>
 
         <div className="mt-2 grid grid-cols-1 gap-y-0 gap-x-6 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-10">
-          {products.map((product) => (
+          {data.data.map((product: products) => (
             <Product
-              name={product.name}
-              id={product.id}
-              image={product.imageSrc}
-              price={product.price}
+              name={product.Name}
+              id={product.ID}
+              image={product.Image}
+              price={product.Price}
             />
           ))}
         </div>

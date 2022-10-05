@@ -4,9 +4,9 @@ function App() {
   return (
     <div className="App">
       <h1>Page does not exist</h1>
-      <Link href="index">Kaas</Link>
+      <Link href="Index">Go back to home</Link>
     </div>
   );
 }
 
-export default Error;
+export default App;
