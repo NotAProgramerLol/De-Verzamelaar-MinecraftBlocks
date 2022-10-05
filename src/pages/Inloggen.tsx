@@ -1,5 +1,5 @@
-import { useState, useId } from "react";
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 import "./css/Inloggen.css";
 import axios from "axios";
 
@@ -8,10 +8,6 @@ type response = {
   data: {
     message: string;
   };
-};
-type sendData = {
-  email: string;
-  password: string;
 };
 
 function App() {
