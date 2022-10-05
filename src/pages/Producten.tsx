@@ -13,7 +13,6 @@ type products = {
   ID: number;
 };
 function App() {
-  const queryClient = useQueryClient();
   const { isLoading, error, data } = useQuery(
     ["getProducts"],
     async (): Promise<response | any> => {
@@ -24,7 +23,7 @@ function App() {
       return resp;
     }
   );
-  useEffect;
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>An error has occurred!</p>;
   return (
