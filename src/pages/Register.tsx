@@ -1,4 +1,4 @@
-import "./css/Register.css";
+import local_css from "./css/Register.css?inline";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
@@ -46,7 +46,8 @@ function App() {
 
   const [error, setError] = useState("");
   return (
-    <div className="App">
+    <div className="Register">
+      <style>{local_css}</style>
       <div className="panel">
         <div className="form-control w-full max-w-xs">
           <label className="label">

@@ -1,7 +1,6 @@
-import "./css/Producten.css";
+import local_css from "./css/Producten.css?inline";
 import Product from "../../components/producten/Product";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 type response = {
   response: string;
   data: products[];
@@ -28,6 +27,7 @@ function App() {
   if (error) return <p>An error has occurred!</p>;
   return (
     <div className="bg-white">
+      <style>{local_css}</style>
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           Alle producten

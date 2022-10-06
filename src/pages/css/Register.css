@@ -1,17 +1,17 @@
-.App {
+.Register {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 90vh;
 }
-.App > .panel {
+.Register > .panel {
   width: 400px;
   border-radius: 5px;
   padding: 5%;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
-.App > .panel > .error {
+.Register > .panel > .error {
   color: red;
 }

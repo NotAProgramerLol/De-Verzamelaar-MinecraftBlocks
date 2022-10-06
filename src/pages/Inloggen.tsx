@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import "./css/Inloggen.css";
+import local_css from "./css/Inloggen.css?inline";
 import axios from "axios";
 import Link from "../../components/general/Link";
 type response = {
@@ -46,6 +46,7 @@ function App() {
   const [error, setError] = useState("");
   return (
     <div className="App">
+      <style>{local_css}</style>
       <div className="panel">
         <div className="form-control w-full max-w-xs">
           <label className="label">
