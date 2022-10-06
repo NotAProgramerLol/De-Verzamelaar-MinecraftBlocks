@@ -14,4 +14,10 @@
       }
     }
   }
+  .producten {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 400px);
+    gap: min(30px, 2.5%);
+  }
 }
