@@ -13,16 +13,16 @@ $passwordInput = $_POST["password"];
 $confirmPasswordInput = $_POST["confirmPassword"];
 
 //validation
-checkIfValueIsSet($emailInput, "Email has not been set! $emailInput", "", "The email input is not a email!");
+checkIfValueIsSet($emailInput, "Er is geen email gezet", "", "Het email dat is ingevuld is geen email!");
 if (!filter_var($emailInput, FILTER_VALIDATE_EMAIL)) {
-    $json = json_encode(["response" => "Failed", "data" => ["message" => "The email input is not a email!"]]);
+    $json = json_encode(["response" => "Failed", "data" => ["message" => "Het email dat is ingevuld is geen email!"]]);
     echo $json;
     exit();
 }
-checkIfValueIsSet($passwordInput, "Password has not been set!", "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,18}$/", "The password input has not met the requirements!");
-checkIfValueIsSet($confirmPasswordInput, "Confirm password has not been set!", "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,18}$/", "The confirm password input has not met the requirements!");
+checkIfValueIsSet($passwordInput, "Er is geen password gezet", "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,18}$/", "Het password moet 8 tot 18 karakters hebben en, minimaal één hoofdletter, één kleine letter, één cijfer en één speciaal teken!");
+checkIfValueIsSet($confirmPasswordInput, "Er is geen confirm password gezet", "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,18}$/", "Het password moet 8 tot 18 karakters hebben en, minimaal één hoofdletter, één kleine letter, één cijfer en één speciaal teken!");
 if ($passwordInput != $confirmPasswordInput) {
-    $json = json_encode(["response" => "Failed", "data" => ["message" => "Password en confirm password is niet het zelfde"]]);
+    $json = json_encode(["response" => "Failed", "data" => ["message" => "Password en confirm password zijn niet het zelfde"]]);
     echo $json;
     exit();
 }

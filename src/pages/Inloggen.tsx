@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import "./css/Inloggen.css";
 import axios from "axios";
-
+import Link from "../../components/general/Link";
 type response = {
   response: string;
   data: {
@@ -11,7 +11,7 @@ type response = {
 };
 
 function App() {
-  const { mutate, isLoading } = useMutation(
+  const { mutate } = useMutation(
     async (): Promise<response | any> => {
       try {
         const { data: response } = await axios.postForm(
@@ -72,6 +72,8 @@ function App() {
           <input
             type="password"
             id={password}
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
+            title="Het password moet 8 tot 18 karakters hebben en, minimaal één hoofdletter, één kleine letter, één cijfer en één speciaal teken!"
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Type here"
             className="input input-sm input-bordered input-primary w-full max-w-xs"
@@ -83,18 +85,28 @@ function App() {
             </span>
           </label>
         </div>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            try {
-              mutate();
-            } catch (error) {
-              setError("Er is iets fout gegaan probeer het later opnieuw!");
-            }
-          }}
-        >
-          Login
-        </button>
+        <div className="formButtons">
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                try {
+                  mutate();
+                } catch (error) {
+                  setError("Er is iets fout gegaan probeer het later opnieuw!");
+                }
+              }}
+            >
+              Login
+            </button>
+          </div>
+
+          <div>
+            <Link href="Register">
+              <p>Registreer</p>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

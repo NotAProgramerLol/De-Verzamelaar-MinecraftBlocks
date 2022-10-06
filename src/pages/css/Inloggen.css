@@ -15,3 +15,16 @@
 .App > .panel > .error {
   color: red;
 }
+.App > .panel > .formButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.App > .panel > .formButtons > div > a > p {
+  text-align: right;
+}
+.App > .panel > .formButtons > div:hover > a > p {
+  color: blueviolet;
+  transition: 250ms ease-in-out;
+}
