@@ -1,0 +1,17 @@
+.App {
+  .header {
+    margin: 0 min(150px, 5%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .searchUser {
+      div {
+        float: left;
+      }
+    }
+    .userInfo {
+      div {
+        float: right;
+      }
+    }
+  }
+}
