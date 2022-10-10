@@ -1,5 +1,7 @@
 import local_css from "./css/ProductInfo.scss?inline";
 import { useQuery } from "@tanstack/react-query";
+import Link from "../../components/general/Link";
+
 type response = {
   response: string;
   date: product[];
@@ -46,7 +48,15 @@ function App() {
         <div className="info">
           <div className="flex">
             <div className="w-1/2">
-              <button>Toevoegen aan winkelwagen</button>
+              <button
+                onClick={() => {
+                  let cart = JSON.parse(sessionStorage.getItem("Cart") || "[]");
+                  cart.push(data.data[0]);
+                  sessionStorage.setItem("Cart", JSON.stringify(cart));
+                }}
+              >
+                <Link href="Producten">Toevoegen aan winkelwagen</Link>
+              </button>
             </div>
             <div className="w-1/2">
               <div className="float-right">
