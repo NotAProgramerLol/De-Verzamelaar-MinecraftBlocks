@@ -19,12 +19,19 @@ const Product = (product: Props) => {
       </h2>
       <div key={product.id} className="group relative">
         <div className="min-h-10 aspect-w-10 aspect-h-10 w-full overflow-hidden bg-gray-300 lg:aspect-none lg:h-70">
-          <img
-            src={product.image}
-            className="object-cover object-center lg:h-100 lg:w-100"
-          />
+          <div className="flex">
+            <img
+              src={product.image}
+              className="object-cover object-center lg:h-100 lg:w-100"
+            />
+            <Link href="ProductInfo" pageProp={{ ID: product.id }}>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Meer informatie</button>
+              </div>
+            </Link>
+          </div>
         </div>
-        <div className="mt- flex justify-between"></div>
+        <div className="mt-flex justify-between"></div>
       </div>
     </div>
   );

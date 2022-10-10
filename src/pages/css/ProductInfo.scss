@@ -1,0 +1,13 @@
+.App {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: min(25px, 5%);
+    .img {
+      img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}

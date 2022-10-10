@@ -19,9 +19,11 @@ const Product = (product: Props) => {
           <h2 className="card-title">{product.name}</h2>
           <p>Prijs: € {product.price}</p>
           <p>Beschikbaarheid: {product.availability}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Meer informatie</button>
-          </div>
+          <Link href="ProductInfo" pageProp={{ ID: product.id }}>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary">Meer informatie</button>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

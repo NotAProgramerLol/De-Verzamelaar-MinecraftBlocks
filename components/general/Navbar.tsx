@@ -26,12 +26,17 @@ function Navbar() {
           >
             <li>
               <Link href="Producten">
-                <p>Collectie</p>
+                <p>Producten</p>
               </Link>
             </li>
             <li>
               <Link href="Verzameling">
                 <p>Verzamelingen</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="Cart">
+                <p>Cart</p>
               </Link>
             </li>
           </ul>
@@ -46,12 +51,17 @@ function Navbar() {
         <ul className="menu menu-horizontal p-0">
           <li>
             <Link href="Producten">
-              <p>Collectie</p>
+              <p>Producten</p>
             </Link>
           </li>
           <li>
             <Link href="Verzameling">
               <p>Verzamelingen</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="Cart">
+              <p>Cart</p>
             </Link>
           </li>
         </ul>
