@@ -42,6 +42,7 @@ function App() {
       <button
         onClick={() => {
           mutate();
+          sessionStorage.removeItem("Cart");
         }}
       >
         Betaal

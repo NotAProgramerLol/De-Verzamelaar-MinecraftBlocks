@@ -40,7 +40,9 @@ function App() {
           url =
             "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getCollection.php";
         }
+
         const { data: collectionResponse } = await axios.get(url);
+        console.log(collectionResponse);
 
         if (collectionResponse.response == "Failed") {
           returnValue.response = "Failed";
@@ -57,6 +59,7 @@ function App() {
             returnValue.data?.push(product.data[0]);
           }
         }
+        console.log(returnValue);
         return returnValue;
       } catch {
         return returnValue;
