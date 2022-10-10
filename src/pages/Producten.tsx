@@ -16,7 +16,7 @@ function App() {
     ["getProducts"],
     async (): Promise<response | any> => {
       let resp = await fetch(
-        "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getProducts.php"
+        "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getProducts.php?onlyAvailable=true"
       );
       resp = (await resp.json()) as response | any;
       return resp;
