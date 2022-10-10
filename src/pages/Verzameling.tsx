@@ -3,24 +3,70 @@ import local_css from "./css/Verzameling.scss?inline";
 import Product from "../../components/verzameling/Product";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-type response = {};
+import axios from "axios";
+
+type collectionResponse = {
+  response: string;
+  data: number[];
+};
+type product = {
+  ID: number;
+  Name: string;
+  Description: string;
+  Price: number;
+  Availability: number;
+  Image: string;
+};
+type collectionProductsResponse = {
+  response: string;
+  data?: product[];
+};
 function App() {
   const [ID, setID] = useState(
     sessionStorage.getItem("SearchableID") as string | ""
   );
-  if (ID == null) {
-    setID("");
-  }
   const { isLoading, error, data } = useQuery(
-    ["getProducts"],
-    async (): Promise<response | any> => {
-      let resp = await fetch(
-        "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getProducts.php"
-      );
-      resp = (await resp.json()) as response | any;
-      return resp;
+    ["getCollection"],
+    async (): Promise<collectionProductsResponse | any> => {
+      let returnValue: collectionProductsResponse = {
+        response: "Failed",
+        data: [],
+      };
+      try {
+        let url =
+          "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getCollection.php?ID=" +
+          ID;
+        if (ID == null) {
+          url =
+            "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getCollection.php";
+        }
+        const { data: collectionResponse } = await axios.get(url);
+
+        if (collectionResponse.response == "Failed") {
+          returnValue.response = "Failed";
+          return returnValue;
+        }
+        returnValue.response = "Success";
+        for (let i = 0; i < collectionResponse.data.length; i++) {
+          const { data: product } = await axios.get(
+            "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/getProduct.php?ID=" +
+              collectionResponse.data[i]
+          );
+
+          if (product.response == "Success") {
+            returnValue.data?.push(product.data[0]);
+          }
+        }
+        return returnValue;
+      } catch {
+        return returnValue;
+      }
     }
   );
+  if (isLoading) {
+    return <h1>LOADING..</h1>;
+  }
+  console.log(data);
   return (
     <div className="App">
       <style>{local_css}</style>
@@ -64,20 +110,21 @@ function App() {
         </div>
       </div>
       <div className="producten">
-        <Product
-          name="test"
-          price={12.2}
-          availability={5}
-          id={2}
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
-        ></Product>
-        <Product
-          name="test"
-          price={12.2}
-          availability={5}
-          id={2}
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
-        ></Product>
+        {data.response != "Failed" ? (
+          data.data.map((product: product) => {
+            return (
+              <Product
+                name={product.Name}
+                price={product.Price}
+                availability={product.Availability}
+                id={product.ID}
+                image={product.Image}
+              ></Product>
+            );
+          })
+        ) : (
+          <h1>Geen collectie gevonden!</h1>
+        )}
       </div>
     </div>
   );

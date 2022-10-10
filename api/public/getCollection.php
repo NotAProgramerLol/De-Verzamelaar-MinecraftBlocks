@@ -2,9 +2,23 @@
 header("Content-Type: application/json");
 require_once "../keys/LoginDB.php";
 $SearchableID = $_GET["ID"];
+$JWT = $_COOKIE["JWT"];
 if (!isset($SearchableID) || $SearchableID == "") {
-    echo json_encode(array(["response" => "Failed", "data" => ["message" => "Er is geen ID gegeven!"]]));
-    exit;
+    if (!isset($JWT) || $JWT == "") {
+        echo json_encode(array(["response" => "Failed", "data" => ["message" => "Er is geen ID gegeven!"]]));
+        exit;
+    }
+    $JSON = json_decode(base64_decode(explode(".", $JWT)[1]));
+
+    $checkIfUserExist = mysqli_query($dbConnection, "SELECT * FROM `Accounts` WHERE `ID` = '" . $JSON->ID . "' AND `Email` = '" . $JSON->email . "' LIMIT 1");
+    if (mysqli_num_rows($checkIfUserExist) == 0) {
+        echo json_encode(array(["response" => "Failed", "data" => ["message" => "Er is geen ID gegeven!"]]));
+        exit;
+    }
+    $userDetails = mysqli_fetch_assoc($checkIfUserExist);
+    $SearchableID = $userDetails["SearchableID"];
+
+
 }
 $query = "SELECT `ID` FROM `Accounts` WHERE `SearchableID` = '$SearchableID' LIMIT 1";
 
