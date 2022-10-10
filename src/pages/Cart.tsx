@@ -32,6 +32,10 @@ function App() {
           setError(data.data.message);
           return;
         }
+        let evt = new CustomEvent("navigate", {
+          detail: { page: "Verzameling" },
+        });
+        document.dispatchEvent(evt);
       },
     }
   );
