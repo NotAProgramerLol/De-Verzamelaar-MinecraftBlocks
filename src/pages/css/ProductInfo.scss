@@ -9,5 +9,22 @@
         max-width: 100%;
       }
     }
+    .info {
+      margin: 5%;
+
+      .inf {
+        h1 {
+          padding: 15px;
+          border-radius: 15px;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+      }
+      .desc {
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+    }
   }
 }

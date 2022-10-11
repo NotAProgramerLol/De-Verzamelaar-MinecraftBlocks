@@ -38,21 +38,21 @@ const Form = (data: products) => {
       <p>
         <label>Naam: </label>
 
-        <input type="text" defaultValue={data.Name} />
+        <input type="text" disabled defaultValue={data.Name} />
       </p>
       <p>
         <label>Description: </label>
         <br />
-        <textarea defaultValue={data.Description}></textarea>
+        <textarea disabled defaultValue={data.Description}></textarea>
       </p>
       <p>
         <label>Prijs: </label>
 
-        <input type="number" defaultValue={data.Price} />
+        <input disabled type="number" defaultValue={data.Price} />
       </p>
       <p>
         <label>Hoeveelheid: </label>
-        <input type="number" defaultValue={data.Availability} />
+        <input disabled type="number" defaultValue={data.Availability} />
       </p>
       <p>
         <img src={data.Image} alt="" />
