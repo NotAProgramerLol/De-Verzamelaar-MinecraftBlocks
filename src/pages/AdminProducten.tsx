@@ -109,7 +109,6 @@ function App() {
                   type="number"
                   onChange={(event) => {
                     setNewAv(event.target.value);
-                    location.reload();
                   }}
                 />
               </p>
