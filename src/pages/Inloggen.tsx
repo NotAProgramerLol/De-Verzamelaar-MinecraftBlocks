@@ -18,7 +18,10 @@ function App() {
           "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/auth/login.php",
           { email, password }
         );
-
+        if (response.role == "Beheerder") {
+          sessionStorage.setItem("role", response.role);
+          location.reload();
+        }
         return response;
       } catch (error) {
         console.log(error);

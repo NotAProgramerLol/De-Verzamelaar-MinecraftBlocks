@@ -1,8 +1,16 @@
 .producten {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, 350px);
   gap: 5%;
+  form {
+    padding: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 }
 .newProduct {
   margin-left: 5%;
+  form {
+    padding: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 }

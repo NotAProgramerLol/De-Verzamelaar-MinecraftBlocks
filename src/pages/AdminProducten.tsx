@@ -64,9 +64,11 @@ function App() {
                     data: formData,
                     headers: { "Content-Type": "multipart/form-data" },
                   });
-                  if (response.data.response == "Failed") {
-                    setError(response.data.data.message);
+                  if (response.data.response != "Failed") {
+                    location.reload();
+                    return;
                   }
+                  setError(response.data.data.message);
                 } catch (error) {
                   console.log(error);
                 }

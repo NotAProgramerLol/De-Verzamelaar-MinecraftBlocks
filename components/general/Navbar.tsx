@@ -1,5 +1,15 @@
 import Link from "./Link";
 function Navbar() {
+  let beheer = <span></span>;
+  if (sessionStorage.getItem("role") == "Beheerder") {
+    beheer = (
+      <li>
+        <Link href="AdminProducten">
+          <p>Beheer producten</p>
+        </Link>
+      </li>
+    );
+  }
   return (
     <div className="navbar bg-white">
       <div className="navbar-start">
@@ -39,6 +49,7 @@ function Navbar() {
                 <p>Cart</p>
               </Link>
             </li>
+            {beheer}
           </ul>
         </div>
         <Link href="Index">
@@ -64,6 +75,7 @@ function Navbar() {
               <p>Cart</p>
             </Link>
           </li>
+          {beheer}
         </ul>
       </div>
       <div className="navbar-end">

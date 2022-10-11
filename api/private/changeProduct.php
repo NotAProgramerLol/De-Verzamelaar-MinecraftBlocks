@@ -14,7 +14,7 @@ if (!isset($productID) || $productID == "") {
     echo json_encode(array("response" => "Failed", "data" => ["message" => "Er is geen product gegeven"]));
     exit;
 }
-$oldInfo = mysqli_query($dbConnection, "SELECT * FROM `Accounts` WHERE `ID` = '" . $productID . "'");
+$oldInfo = mysqli_query($dbConnection, "SELECT * FROM `Products` WHERE `ID` = '" . $productID . "'");
 if (mysqli_num_rows($oldInfo) == 0) {
     echo json_encode(array("response" => "Failed", "data" => ["message" => "Dit product bestaat niet"]));
     exit;
@@ -52,9 +52,8 @@ if (isset($imgInput) || $imgInput != "") {
         echo json_encode(array("response" => "Failed", "data" => ["message" => "Het bestand moet een JPG, JPEG, PNG of GIF zijn"]));
         exit;
     }
-    if (move_uploaded_file($imgInput["tmp_name"], $target_dir . $productName . "." . strtolower(pathinfo($imgInput["name"], PATHINFO_EXTENSION)))) {
-        $result = mysqli_query($dbConnection, "INSERT INTO `Products` (`ProductName`, `ProductDescription`, `ProductPrice`, `ProductAvailability`, `ProductImage`)
-        VALUES ('$nameInput', '$descriptionInput', '$priceInput', '$availabilityInput', 'https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/img/products/" . $oldInfo["ProductName"] . "." . strtolower(pathinfo($imgInput["name"], PATHINFO_EXTENSION)) . "')");
+    if (move_uploaded_file($imgInput["tmp_name"], $target_dir . $oldInfo["ProductName"] . "." . strtolower(pathinfo($imgInput["name"], PATHINFO_EXTENSION)))) {
+        $result = mysqli_query($dbConnection, "UPDATE `Products` SET `ProductName` = '$nameInput', `ProductDescription` = '$descriptionInput', `ProductPrice` = '$priceInput', `ProductAvailability` = '$availabilityInput', `ProductImage` = 'https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/public/img/products/" . $oldInfo["ProductName"] . "." . strtolower(pathinfo($imgInput["name"], PATHINFO_EXTENSION)) . "' WHERE `ID` = '" . $oldInfo["ID"] . "'");
         if (!$result) {
             echo json_encode(array("response" => "Failed", "data" => ["message" => "Kon niet uploaden naar de database!"]));
             exit;
@@ -67,8 +66,8 @@ if (isset($imgInput) || $imgInput != "") {
         exit;
     }
 }
-$result = mysqli_query($dbConnection, "INSERT INTO `Products` (`ProductName`, `ProductDescription`, `ProductPrice`, `ProductAvailability`)
-        VALUES ('$nameInput', '$descriptionInput', '$priceInput', '$availabilityInput')");
+$result = mysqli_query($dbConnection, "UPDATE `Products` SET `ProductName` = '$nameInput', `ProductDescription` = '$descriptionInput', `ProductPrice` = '$priceInput', `ProductAvailability` = '$availabilityInput' WHERE `ID` = '" . $oldInfo["ID"] . "'");
+
 if (!$result) {
     echo json_encode(array("response" => "Failed", "data" => ["message" => "Kon niet uploaden naar de database!"]));
     exit;
