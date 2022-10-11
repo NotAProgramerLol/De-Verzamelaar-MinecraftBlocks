@@ -1,5 +1,5 @@
 * {
-    /* outline: auto; */
+    // outline: auto;
 }
 kassa {
     padding: 10px;
@@ -17,12 +17,9 @@ kassa {
     grid-row-gap: 0px;
     }
 .Links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(86, 113, 113);
-    height: 85vh;
-    flex-direction: column;
+
+    background-color: rgb(217, 217, 217);
+
 }
 .Rechts {
     display: flex;
@@ -65,4 +62,20 @@ kassa {
 .tekstmidden {
     color: black;
     margin-left: 10px;
+}
+.Producten {
+    .product {
+        display: grid;
+        grid-template-columns: 5% 15% 1fr 1fr;
+        height: 150px;
+        gap: 1%;
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img {
+            width: 100%;
+        }
+    }
 }
