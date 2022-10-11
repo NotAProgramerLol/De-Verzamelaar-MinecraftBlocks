@@ -1,0 +1,81 @@
+* {
+    // outline: auto;
+}
+kassa {
+    padding: 10px;
+    margin: 10px;
+    width: 50%;
+    background-color: rgb(36, 34, 34);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.parent {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+.Links {
+
+    background-color: rgb(217, 217, 217);
+
+}
+.Rechts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+    height: 85vh;
+    flex-direction: column;
+}
+.Berekeningen {
+    width: 80%;
+    height: 15%;
+    margin: 10px;
+    color: white;
+    border: 2px black solid;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.Berekeningen2 {
+    width: 80%;
+    height: 25%;
+    margin: 10px;
+    color: white;
+    border: 2px black solid;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.Tekstboven {
+    width: 80%;
+    font-size: 30px;
+}
+.Tekstboven2 {
+    width: 80%;
+    font-size: 30px;
+}
+.tekstmidden {
+    color: black;
+    margin-left: 10px;
+}
+.Producten {
+    .product {
+        display: grid;
+        grid-template-columns: 5% 15% 1fr 1fr;
+        height: 150px;
+        gap: 1%;
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img {
+            width: 100%;
+        }
+    }
+}
