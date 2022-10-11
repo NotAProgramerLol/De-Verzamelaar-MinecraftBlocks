@@ -41,16 +41,38 @@ function App() {
   );
   if (error != "") return <h1>{error}</h1>;
   return (
+
     <div className="App">
       <style>{local_css}</style>
-      <button
-        onClick={() => {
-          mutate();
-          sessionStorage.removeItem("Cart");
-        }}
-      >
-        Betaal
-      </button>
+      <div className="parent">
+
+    <div className="Links">
+    <p className="Tekstboven2">Winkelwagentje</p>
+    <div className="Product"></div>
+
+    </div>
+
+
+    <div className="Rechts">
+
+      <p className="Tekstboven">Winkelwagentje</p>
+      <div className="Berekeningen">
+        <p className="tekstmidden">Tekst</p>
+      </div>
+      <div className="Berekeningen">
+        <p className="tekstmidden">Tekst</p>
+      </div>
+
+        <button className="kassa"
+            onClick={() => {
+              mutate();
+              sessionStorage.removeItem("Cart");
+            }}
+          >
+            Door naar de kassa
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
