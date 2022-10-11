@@ -3,6 +3,18 @@
   grid-template-columns: repeat(auto-fit, 350px);
   gap: 5%;
   form {
+    label {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+    input[type="submit"] {
+      transition: 250ms ease-in-out;
+      text-transform: capitalize;
+      font-weight: bold;
+      ::hover {
+        color: purple;
+      }
+    }
     padding: 5%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
@@ -10,6 +22,10 @@
 .newProduct {
   margin-left: 5%;
   form {
+    label {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
     padding: 5%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   }
