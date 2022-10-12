@@ -1,7 +1,17 @@
 import Link from "./Link";
 function Navbar() {
+  let beheer = <span></span>;
+  if (sessionStorage.getItem("role") == "Beheerder") {
+    beheer = (
+      <li>
+        <Link href="AdminProducten">
+          <p>Beheer producten</p>
+        </Link>
+      </li>
+    );
+  }
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden ">
@@ -39,6 +49,7 @@ function Navbar() {
                 <p>Cart</p>
               </Link>
             </li>
+            {beheer}
           </ul>
         </div>
         <Link href="Index">
@@ -64,6 +75,7 @@ function Navbar() {
               <p>Cart</p>
             </Link>
           </li>
+          {beheer}
         </ul>
       </div>
       <div className="navbar-end">

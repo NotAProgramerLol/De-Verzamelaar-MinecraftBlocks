@@ -2,15 +2,15 @@ import local_css from "./css/App.css?inline";
 
 function App() {
   return (
-    <div className="App w.screen h.screen grid grid-cols-3 grid-rows-2 from-green-700 via-white to-white bg-gradient-to-b text-black">
+    <div className="App w.screen h.screen grid grid-cols-3 grid-rows-2 text-black">
       <style>{local_css}</style>
-      <div className="row-start-1 col-start-1">
+      <div className="row-start-1 col-start-1 user-rows">
         <p>
           hallo en welkom bij deze soteer site hier kan je je bloken colectie
           vergroten{" "}
         </p>
       </div>
-      <div className="row-start-2 col-start-1">
+      <div className="row-start-2 col-start-1 user-rows">
         <br />
         <p>
           wij moesten deze site maken voor beroeps, en we hebben (geforceerd)

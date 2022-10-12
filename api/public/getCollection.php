@@ -20,7 +20,7 @@ if (!isset($SearchableID) || $SearchableID == "") {
 
 
 }
-$query = "SELECT `ID` FROM `Accounts` WHERE `SearchableID` = '$SearchableID' LIMIT 1";
+$query = "SELECT `ID`,`SearchableID` FROM `Accounts` WHERE `SearchableID` = '$SearchableID' LIMIT 1";
 
 $account = mysqli_query($dbConnection, $query);
 
@@ -38,4 +38,4 @@ if (mysqli_num_rows($collection) > 0) {
     }
 }
 
-echo json_encode(array("response" => "Success", "data" => $response));
+echo json_encode(array("response" => "Success", "data" => $response, 'SearchableID' => $accountInfo["SearchableID"]));

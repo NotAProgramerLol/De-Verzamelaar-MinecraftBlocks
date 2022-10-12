@@ -8,6 +8,7 @@ import axios from "axios";
 type collectionResponse = {
   response: string;
   data: number[];
+  SearchableID: string;
 };
 type product = {
   ID: number;
@@ -22,11 +23,10 @@ type collectionProductsResponse = {
   data?: product[];
 };
 function App() {
-  const [ID, setID] = useState(
-    sessionStorage.getItem("SearchableID") as string | ""
-  );
+  const [ID, setID] = useState("");
+  const [searchable, setSearchable] = useState("");
   const { isLoading, error, data } = useQuery(
-    ["getCollection"],
+    ["getCollection", ID],
     async (): Promise<collectionProductsResponse | any> => {
       let returnValue: collectionProductsResponse = {
         response: "Failed",
@@ -48,6 +48,7 @@ function App() {
           returnValue.response = "Failed";
           return returnValue;
         }
+        setSearchable(collectionResponse.SearchableID);
         returnValue.response = "Success";
         for (let i = 0; i < collectionResponse.data.length; i++) {
           const { data: product } = await axios.get(
@@ -84,7 +85,6 @@ function App() {
               </label>
               <input
                 type="text"
-                value={ID}
                 placeholder="searchable ID hier"
                 maxLength={45}
                 className="input input-bordered input-sm w-full max-w-full"
@@ -100,6 +100,7 @@ function App() {
             <div>
               <input
                 type="text"
+                value={searchable}
                 placeholder="searchable ID hier"
                 maxLength={45}
                 disabled
@@ -107,12 +108,13 @@ function App() {
               />
             </div>
             <div>
-              <h3>Role</h3>
+              <h3>Searachable ID:</h3>
             </div>
           </div>
         </div>
       </div>
       <div className="producten">
+        {isLoading ? <h1>Loading Collectie...</h1> : null}
         {data.response != "Failed" ? (
           data.data.map((product: product) => {
             return (
