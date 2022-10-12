@@ -13,7 +13,7 @@ if ($items == "" || !isset($items)) {
 print_r($items);
 for ($i = 0; $i < count($items); $i++) {
     $checkAv = mysqli_query($dbConnection, "SELECT `ID`, `ProductAvailability` FROM `Products` WHERE `ID` = '" . $items[$i]["ID"] . "'");
-    if (mysqli_num_rows($checkAv) == 0) {
+    if (mysqli_num_rows($checkAv) == 0 || mysqli_fetch_assoc($checkAv)["ProductAvailability"] < 1) {
         echo json_encode(array("response" => "Failed", "data" => ["message" => "Een item dat je probeert te kopen is niet meer beschikbaar"]));
         exit;
     }

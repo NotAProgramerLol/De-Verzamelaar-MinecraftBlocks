@@ -20,7 +20,6 @@ function App() {
           "https://87609.stu.sd-lab.nl/beroeps/verzamelaar/api/private/addToCollection.php",
           { Items: cart }
         );
-
         return response;
       } catch (error) {
         console.log(error);
